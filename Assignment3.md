@@ -6,7 +6,7 @@ Assignment # 3
 Part 1
 Translate into English (M->H) ^(S -> C)
 
-A: Math is easy so the homework is done and It is sunny outside so camping is fun. 
+A:  If Math is easy then the homework is done and It is sunny outside so camping is fun. 
 
 B:  (S^H) ->(MVC)
 
