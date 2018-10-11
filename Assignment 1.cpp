@@ -1,34 +1,57 @@
 Troy Davis 
 Assignment # 1 
+
 #include <iostream>
 #include <string>
 using namespace std;
 
 int main()
 {
-	char repeat = ' yY';
-    string connectors = "!V^->";
+	char c;
+	int counter = 0;
+	string connectors = "!V^->";
 	string statements = "ABCDEFGHIJKLMNOPQRSTUWXYZabcdefghijklmnopqrstuwxyz";
 	string input;
-	cout << "Enter a string: ";
-	getline(cin, input);
+	bool quit = false;
 	bool lastWasAlpha = false;
 	bool lastWasNot = false;
 	bool lastWasConnector = false;
 	bool isValidWff = true;
 	
-	do
+	
+
+	while (!quit)
 	{
+		counter = 0;
+
+		cout << "Enter a string: ";
+		cin.ignore();
+		getline(cin, input);
+
 		for (unsigned int i = 0; i < input.length(); i++)
 		{
 
-			char c = input[i];
-			cout << c << " ";
-			if (c == ' ' || c == '-')
+			 c = input[i];
+			
+			if (c == ' ' || c == '-' || c == '(' || c == ')')
 			{
-				continue;
+				/*if (c == '(')
+				{
+					counter++;
+					
+					
+				}
+
+				else if (c == ')')
+				{
+					counter--;
+				}
+				else
+				{
+					continue;
+				}*/
 			}
-			if (c == '!' || c == 'v' || c == '^' || c == '>' || c == '-')
+			if (c == '!' || c == 'v' || c == '^' || c == '>')
 			{
 				if (c == '>' &&  i > 0)
 				{
@@ -85,12 +108,37 @@ int main()
 			}
 		}
 
-		cout << (isValidWff ? "That is a WFF" : "NOT Valid WFF") << endl;
+		if (counter != 0)
+		{
+			cout << " That is an invalid input of parentheses !\n";
+			isValidWff = false;
+		}
+		
+		
 
-		cout << " Would you like to enter another String ? Y/N ";
-		cin >> repeat;
-	} while (repeat == 'yY');
-	
-	system("pause");
-	
+		cout << (isValidWff ? "That is a WFF" : "NOT Valid WFF") << endl;
+		
+        cout << " Would you like to quit Y/N" << endl;
+		
+		char answer;
+		cin.get(answer);
+		cin.ignore();
+
+			if (toupper(answer) == 'Y')
+			{
+				quit = true;
+			}
+			else
+			{
+				quit = false;
+				
+			}
+			
+		
+		
+			
+	} 
+
+	return 0;
 }
+	
